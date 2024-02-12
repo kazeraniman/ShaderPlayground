@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://dhwtuks0xl8q1"]
+
+[ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="1_yhgth"]
+[ext_resource type="Shader" path="res://shaders/greyscale.gdshader" id="2_kcrd6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpsbp"]
+shader = ExtResource("2_kcrd6")
+
+[node name="GreyscaleShader" instance=ExtResource("1_yhgth")]
+material = SubResource("ShaderMaterial_lpsbp")

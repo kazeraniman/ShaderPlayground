@@ -1,70 +1,62 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1cvkbkq2oi24"]
+[gd_scene load_steps=7 format=3 uid="uid://d1cvkbkq2oi24"]
 
-[ext_resource type="Texture2D" uid="uid://b3sy0y1f4fad" path="res://art/background/game_background_1/layers/sky.png" id="1_o4sux"]
-[ext_resource type="Script" path="res://scripts/auto_parallax_scroll.gd" id="2_74nmt"]
-[ext_resource type="Texture2D" uid="uid://ck26687dchr5v" path="res://art/background/game_background_1/layers/rocks_1.png" id="2_ax1t8"]
-[ext_resource type="Texture2D" uid="uid://rn8tyrw86k84" path="res://art/background/game_background_1/layers/clouds_1.png" id="3_mt3ne"]
-[ext_resource type="Texture2D" uid="uid://b77h63pgk7mdv" path="res://art/background/game_background_1/layers/rocks_2.png" id="3_q0fvw"]
-[ext_resource type="Texture2D" uid="uid://cl04ok1dhxibj" path="res://art/background/game_background_1/layers/clouds_2.png" id="4_2eql8"]
-[ext_resource type="Texture2D" uid="uid://br4hbuu7jx802" path="res://art/background/game_background_1/layers/clouds_3.png" id="6_75gak"]
-[ext_resource type="Texture2D" uid="uid://ch28ygdmtmih5" path="res://art/background/game_background_1/layers/clouds_4.png" id="8_cn340"]
+[ext_resource type="PackedScene" uid="uid://yuugani6usun" path="res://scenes/backgrounds/mountain.tscn" id="1_tujdx"]
+[ext_resource type="Script" path="res://scripts/shader_manager.gd" id="1_wjebc"]
+[ext_resource type="Resource" uid="uid://dhfqvvyfaufe8" path="res://resources/shader_list.tres" id="3_f7emu"]
+[ext_resource type="Script" path="res://scripts/hud.gd" id="4_0sb5s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vl5ar"]
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yojag"]
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(960, 540)
-transform = Transform2D(1, 0, 0, 1, 960, 540)
+[node name="MountainParallaxBackground" parent="." instance=ExtResource("1_tujdx")]
 
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
+[node name="ShaderManager" type="CanvasLayer" parent="."]
+script = ExtResource("1_wjebc")
+shader_list = ExtResource("3_f7emu")
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-texture = ExtResource("1_o4sux")
+[node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("current_shader_name_label")]
+script = ExtResource("4_0sb5s")
+current_shader_name_label = NodePath("HudContainer/CurrentShaderName")
 
-[node name="CloudsBackground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -5.0
+[node name="HudContainer" type="Control" parent="HUD"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBackground"]
-texture = ExtResource("3_mt3ne")
+[node name="CurrentShaderName" type="Label" parent="HUD/HudContainer"]
+layout_mode = 1
+offset_right = 367.0
+offset_bottom = 48.0
+text = "Current Shader: Default"
+label_settings = SubResource("LabelSettings_vl5ar")
 
-[node name="CloudsBehindRocks" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -10.0
+[node name="Instructions" type="Label" parent="HUD/HudContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Arrow keys to change shaders. Space to toggle HUD."
+label_settings = SubResource("LabelSettings_yojag")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBehindRocks"]
-texture = ExtResource("4_2eql8")
-
-[node name="RocksBackground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -15.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/RocksBackground"]
-texture = ExtResource("2_ax1t8")
-
-[node name="CloudsBetweenRocks" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -20.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsBetweenRocks"]
-texture = ExtResource("6_75gak")
-
-[node name="RocksForeground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -25.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/RocksForeground"]
-texture = ExtResource("3_q0fvw")
-
-[node name="CloudsFront" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
-script = ExtResource("2_74nmt")
-speed = -30.0
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/CloudsFront"]
-texture = ExtResource("8_cn340")
+[connection signal="shader_changed" from="ShaderManager" to="HUD" method="_on_shader_manager_shader_changed"]

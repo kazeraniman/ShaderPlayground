@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://yuugani6usun"]
+
+[ext_resource type="Texture2D" uid="uid://b3sy0y1f4fad" path="res://art/background/game_background_1/layers/sky.png" id="1_4davd"]
+[ext_resource type="Script" path="res://scripts/auto_parallax_scroll.gd" id="2_ra4m4"]
+[ext_resource type="Texture2D" uid="uid://rn8tyrw86k84" path="res://art/background/game_background_1/layers/clouds_1.png" id="3_c5xxf"]
+[ext_resource type="Texture2D" uid="uid://cl04ok1dhxibj" path="res://art/background/game_background_1/layers/clouds_2.png" id="4_kcs8u"]
+[ext_resource type="Texture2D" uid="uid://ck26687dchr5v" path="res://art/background/game_background_1/layers/rocks_1.png" id="5_pucrt"]
+[ext_resource type="Texture2D" uid="uid://br4hbuu7jx802" path="res://art/background/game_background_1/layers/clouds_3.png" id="6_ukgqb"]
+[ext_resource type="Texture2D" uid="uid://b77h63pgk7mdv" path="res://art/background/game_background_1/layers/rocks_2.png" id="7_icxyc"]
+[ext_resource type="Texture2D" uid="uid://ch28ygdmtmih5" path="res://art/background/game_background_1/layers/clouds_4.png" id="8_it5dm"]
+
+[node name="MountainParallaxBackground" type="ParallaxBackground"]
+offset = Vector2(960, 540)
+transform = Transform2D(1, 0, 0, 1, 960, 540)
+
+[node name="Sky" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky"]
+texture = ExtResource("1_4davd")
+
+[node name="CloudsBackground" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsBackground"]
+texture = ExtResource("3_c5xxf")
+
+[node name="CloudsBehindRocks" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -10.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsBehindRocks"]
+texture = ExtResource("4_kcs8u")
+
+[node name="RocksBackground" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -15.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RocksBackground"]
+texture = ExtResource("5_pucrt")
+
+[node name="CloudsBetweenRocks" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsBetweenRocks"]
+texture = ExtResource("6_ukgqb")
+
+[node name="RocksForeground" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -25.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RocksForeground"]
+texture = ExtResource("7_icxyc")
+
+[node name="CloudsFront" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 0)
+script = ExtResource("2_ra4m4")
+speed = -30.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CloudsFront"]
+texture = ExtResource("8_it5dm")
