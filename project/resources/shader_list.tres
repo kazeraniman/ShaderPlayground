@@ -1,10 +1,26 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=5 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=9 format=3 uid="uid://dhfqvvyfaufe8"]
 
-[ext_resource type="Script" path="res://scripts/shader_list.gd" id="1_bpya4"]
-[ext_resource type="Resource" uid="uid://lgnf5b63b0rk" path="res://resources/shaders/default_shader_properties.tres" id="2_l6lqf"]
-[ext_resource type="Resource" uid="uid://d2fj45swjuvxq" path="res://resources/shaders/greyscale_shader_properties.tres" id="3_hqxhx"]
-[ext_resource type="Resource" uid="uid://chej3hv10tn17" path="res://resources/shaders/pixelate_shader_properties.tres" id="4_qefor"]
+[ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_bpya4"]
+[ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_pw4kq"]
+[ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="3_rylfg"]
+[ext_resource type="PackedScene" uid="uid://dhwtuks0xl8q1" path="res://scenes/shaders/greyscale.tscn" id="4_c3r4k"]
+[ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
+
+[sub_resource type="Resource" id="Resource_l263t"]
+script = ExtResource("2_pw4kq")
+name = "Default"
+shader_scene = ExtResource("3_rylfg")
+
+[sub_resource type="Resource" id="Resource_jsdqy"]
+script = ExtResource("2_pw4kq")
+name = "Greyscale"
+shader_scene = ExtResource("4_c3r4k")
+
+[sub_resource type="Resource" id="Resource_el0bt"]
+script = ExtResource("2_pw4kq")
+name = "Pixelate"
+shader_scene = ExtResource("5_mveg0")
 
 [resource]
 script = ExtResource("1_bpya4")
-shader_resources = Array[Resource("res://scripts/shader_properties.gd")]([ExtResource("2_l6lqf"), ExtResource("3_hqxhx"), ExtResource("4_qefor")])
+shader_resources = Array[ExtResource("2_pw4kq")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt")])

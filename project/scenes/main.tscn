@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d1cvkbkq2oi24"]
 
 [ext_resource type="PackedScene" uid="uid://yuugani6usun" path="res://scenes/backgrounds/mountain.tscn" id="1_tujdx"]
-[ext_resource type="Script" path="res://scripts/shader_manager.gd" id="1_wjebc"]
+[ext_resource type="Script" path="res://scripts/resources/shader_manager.gd" id="2_i1arw"]
 [ext_resource type="Resource" uid="uid://dhfqvvyfaufe8" path="res://resources/shader_list.tres" id="3_f7emu"]
 [ext_resource type="Script" path="res://scripts/hud.gd" id="4_0sb5s"]
 
@@ -20,7 +20,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="MountainParallaxBackground" parent="." instance=ExtResource("1_tujdx")]
 
 [node name="ShaderManager" type="CanvasLayer" parent="."]
-script = ExtResource("1_wjebc")
+script = ExtResource("2_i1arw")
 shader_list = ExtResource("3_f7emu")
 
 [node name="HUD" type="CanvasLayer" parent="." node_paths=PackedStringArray("current_shader_name_label")]

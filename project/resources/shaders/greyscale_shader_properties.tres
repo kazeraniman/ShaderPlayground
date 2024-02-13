@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="ShaderProperties" load_steps=3 format=3 uid="uid://d2fj45swjuvxq"]
-
-[ext_resource type="Script" path="res://scripts/shader_properties.gd" id="1_e2rno"]
-[ext_resource type="PackedScene" uid="uid://dhwtuks0xl8q1" path="res://scenes/shaders/greyscale.tscn" id="2_d1ua6"]
-
-[resource]
-script = ExtResource("1_e2rno")
-name = "Greyscale"
-shader_scene = ExtResource("2_d1ua6")
