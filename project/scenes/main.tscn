@@ -60,4 +60,14 @@ label_settings = SubResource("LabelSettings_yojag")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ShaderParameters" type="VBoxContainer" parent="HUD/HudContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [connection signal="shader_changed" from="ShaderManager" to="HUD" method="_on_shader_manager_shader_changed"]

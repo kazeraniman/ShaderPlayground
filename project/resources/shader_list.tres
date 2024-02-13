@@ -1,26 +1,51 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=9 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=13 format=3 uid="uid://dhfqvvyfaufe8"]
 
-[ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_bpya4"]
-[ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_pw4kq"]
+[ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_6hx2y"]
+[ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_m8gra"]
 [ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="3_rylfg"]
 [ext_resource type="PackedScene" uid="uid://dhwtuks0xl8q1" path="res://scenes/shaders/greyscale.tscn" id="4_c3r4k"]
 [ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
+[ext_resource type="PackedScene" uid="uid://cj1dj4viriebu" path="res://scenes/shader_parameter_controls/slider.tscn" id="5_xya2v"]
+[ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/slider_shader_parameter_properties.gd" id="6_xvq7k"]
 
 [sub_resource type="Resource" id="Resource_l263t"]
-script = ExtResource("2_pw4kq")
+script = ExtResource("2_m8gra")
 name = "Default"
 shader_scene = ExtResource("3_rylfg")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([])
 
 [sub_resource type="Resource" id="Resource_jsdqy"]
-script = ExtResource("2_pw4kq")
+script = ExtResource("2_m8gra")
 name = "Greyscale"
 shader_scene = ExtResource("4_c3r4k")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([])
+
+[sub_resource type="Resource" id="Resource_eajal"]
+script = ExtResource("6_xvq7k")
+min = 1.0
+max = 300.0
+step = 1.0
+value = 100.0
+readable_param_name = "X Pixelation"
+param_name = "x_pixelation"
+control_scene = ExtResource("5_xya2v")
+
+[sub_resource type="Resource" id="Resource_0cbtc"]
+script = ExtResource("6_xvq7k")
+min = 1.0
+max = 300.0
+step = 1.0
+value = 100.0
+readable_param_name = "Y Pixelation"
+param_name = "y_pixelation"
+control_scene = ExtResource("5_xya2v")
 
 [sub_resource type="Resource" id="Resource_el0bt"]
-script = ExtResource("2_pw4kq")
+script = ExtResource("2_m8gra")
 name = "Pixelate"
 shader_scene = ExtResource("5_mveg0")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_eajal"), SubResource("Resource_0cbtc")])
 
 [resource]
-script = ExtResource("1_bpya4")
-shader_resources = Array[ExtResource("2_pw4kq")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt")])
+script = ExtResource("1_6hx2y")
+shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt")])
