@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ShaderProperties" load_steps=3 format=3 uid="uid://chej3hv10tn17"]
+
+[ext_resource type="Script" path="res://scripts/shader_properties.gd" id="1_48mrt"]
+[ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="2_sw64r"]
+
+[resource]
+script = ExtResource("1_48mrt")
+name = "Pixelate"
+shader_scene = ExtResource("2_sw64r")

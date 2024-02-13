@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=4 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=5 format=3 uid="uid://dhfqvvyfaufe8"]
 
 [ext_resource type="Script" path="res://scripts/shader_list.gd" id="1_bpya4"]
 [ext_resource type="Resource" uid="uid://lgnf5b63b0rk" path="res://resources/shaders/default_shader_properties.tres" id="2_l6lqf"]
 [ext_resource type="Resource" uid="uid://d2fj45swjuvxq" path="res://resources/shaders/greyscale_shader_properties.tres" id="3_hqxhx"]
+[ext_resource type="Resource" uid="uid://chej3hv10tn17" path="res://resources/shaders/pixelate_shader_properties.tres" id="4_qefor"]
 
 [resource]
 script = ExtResource("1_bpya4")
-shader_resources = Array[Resource("res://scripts/shader_properties.gd")]([ExtResource("2_l6lqf"), ExtResource("3_hqxhx")])
+shader_resources = Array[Resource("res://scripts/shader_properties.gd")]([ExtResource("2_l6lqf"), ExtResource("3_hqxhx"), ExtResource("4_qefor")])

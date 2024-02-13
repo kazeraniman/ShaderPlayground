@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkorosehsi688"]
+
+[ext_resource type="Shader" path="res://shaders/pixelate.gdshader" id="1_1qnxs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75t8f"]
+shader = ExtResource("1_1qnxs")
+shader_parameter/x_pixelation = 100.0
+shader_parameter/y_pixelation = 100.0
+
+[node name="PixelateShader" type="ColorRect"]
+material = SubResource("ShaderMaterial_75t8f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
