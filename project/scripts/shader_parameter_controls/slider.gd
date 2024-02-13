@@ -12,8 +12,8 @@ func init(p_shader_material: ShaderMaterial, p_parameter_properties: ShaderParam
 	slider_parameter_properties = parameter_properties as SliderShaderParameterProperties
 
 	param_name.text = parameter_properties.readable_param_name
-	slider.min_value = slider_parameter_properties.min
-	slider.max_value = slider_parameter_properties.max
+	slider.min_value = slider_parameter_properties.min_value
+	slider.max_value = slider_parameter_properties.max_value
 	slider.step = slider_parameter_properties.step
 
 	var current_value = shader_material.get_shader_parameter(parameter_properties.param_name)

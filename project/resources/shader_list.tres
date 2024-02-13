@@ -22,8 +22,8 @@ shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_pro
 
 [sub_resource type="Resource" id="Resource_eajal"]
 script = ExtResource("6_xvq7k")
-min = 1.0
-max = 300.0
+min_value = 1.0
+max_value = 300.0
 step = 1.0
 value = 100.0
 readable_param_name = "X Pixelation"
@@ -32,8 +32,8 @@ control_scene = ExtResource("5_xya2v")
 
 [sub_resource type="Resource" id="Resource_0cbtc"]
 script = ExtResource("6_xvq7k")
-min = 1.0
-max = 300.0
+min_value = 1.0
+max_value = 300.0
 step = 1.0
 value = 100.0
 readable_param_name = "Y Pixelation"
