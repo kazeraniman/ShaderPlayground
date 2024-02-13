@@ -6,16 +6,23 @@ func _input(event):
 	if event.is_action_released("toggle_hud"):
 		toggle_hud()
 
+	if event.is_action_released("reset_params"):
+		reset_params()
+
 func toggle_hud():
 	if visible:
 		hide()
 	else:
 		show()
 
+func reset_params():
+	for shader_control in $HudContainer/ShaderParameters.get_children():
+		shader_control.reset_param()
+
 func _on_shader_manager_shader_changed(shader_properties: ShaderProperties, material: Material):
 	current_shader_name_label.text = "Current Shader: " + shader_properties.name
-	for shader_parameter in $HudContainer/ShaderParameters.get_children():
-		shader_parameter.queue_free()
+	for shader_control in $HudContainer/ShaderParameters.get_children():
+		shader_control.queue_free()
 
 	for shader_parameter in shader_properties.shader_parameters:
 		var new_control = shader_parameter.control_scene.instantiate()
