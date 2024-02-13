@@ -17,6 +17,10 @@ func init(p_shader_material: ShaderMaterial, p_parameter_properties: ShaderParam
 	slider.step = slider_parameter_properties.step
 
 	var current_value = shader_material.get_shader_parameter(parameter_properties.param_name)
+	if current_value == null:
+		current_value = slider_parameter_properties.value
+		shader_material.set_shader_parameter(parameter_properties.param_name, current_value)
+
 	slider.value = current_value
 	slider_value.text = str(current_value)
 
