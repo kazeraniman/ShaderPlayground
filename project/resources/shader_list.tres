@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=13 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=19 format=3 uid="uid://dhfqvvyfaufe8"]
 
 [ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_6hx2y"]
 [ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_m8gra"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
 [ext_resource type="PackedScene" uid="uid://cj1dj4viriebu" path="res://scenes/shader_parameter_controls/slider.tscn" id="5_xya2v"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/slider_shader_parameter_properties.gd" id="6_xvq7k"]
+[ext_resource type="PackedScene" uid="uid://dma1qk626jhjx" path="res://scenes/shaders/mirror.tscn" id="8_dqgrl"]
+[ext_resource type="PackedScene" uid="uid://ce24ptyseq16d" path="res://scenes/shader_parameter_controls/toggle.tscn" id="8_ybnsi"]
+[ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/toggle_shader_parameter_properties.gd" id="9_4wipw"]
 
 [sub_resource type="Resource" id="Resource_l263t"]
 script = ExtResource("2_m8gra")
@@ -46,6 +49,26 @@ name = "Pixelate"
 shader_scene = ExtResource("5_mveg0")
 shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_eajal"), SubResource("Resource_0cbtc")])
 
+[sub_resource type="Resource" id="Resource_i738m"]
+script = ExtResource("9_4wipw")
+value = true
+readable_param_name = "Mirror X"
+param_name = "shouldMirrorX"
+control_scene = ExtResource("8_ybnsi")
+
+[sub_resource type="Resource" id="Resource_skimr"]
+script = ExtResource("9_4wipw")
+value = false
+readable_param_name = "Mirror Y"
+param_name = "shouldMirrorY"
+control_scene = ExtResource("8_ybnsi")
+
+[sub_resource type="Resource" id="Resource_ntgku"]
+script = ExtResource("2_m8gra")
+name = "Mirror"
+shader_scene = ExtResource("8_dqgrl")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_i738m"), SubResource("Resource_skimr")])
+
 [resource]
 script = ExtResource("1_6hx2y")
-shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt")])
+shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt"), SubResource("Resource_ntgku")])
