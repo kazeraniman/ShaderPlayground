@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cf21w5jkom4bt"]
+
+[ext_resource type="Shader" path="res://shaders/mouse_peephole.gdshader" id="1_uo6nv"]
+[ext_resource type="Script" path="res://scripts/set_mouse_uv.gd" id="2_36g0p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75t8f"]
+shader = ExtResource("1_uo6nv")
+shader_parameter/mouse_uv = Vector2(0, 0)
+shader_parameter/peephole_radius = 100.0
+
+[node name="MousePeepholeShader" type="ColorRect"]
+material = SubResource("ShaderMaterial_75t8f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_36g0p")
+shader_material = SubResource("ShaderMaterial_75t8f")

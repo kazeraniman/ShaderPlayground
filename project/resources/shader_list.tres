@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=17 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=20 format=3 uid="uid://dhfqvvyfaufe8"]
 
 [ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_6hx2y"]
 [ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_m8gra"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/slider_shader_parameter_properties.gd" id="6_xvq7k"]
 [ext_resource type="PackedScene" uid="uid://dma1qk626jhjx" path="res://scenes/shaders/mirror.tscn" id="8_dqgrl"]
+[ext_resource type="PackedScene" uid="uid://cf21w5jkom4bt" path="res://scenes/shaders/mouse_peephole.tscn" id="9_2lhon"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/toggle_shader_parameter_properties.gd" id="9_4wipw"]
 
 [sub_resource type="Resource" id="Resource_l263t"]
@@ -63,6 +64,21 @@ name = "Mirror"
 shader_scene = ExtResource("8_dqgrl")
 shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_i738m"), SubResource("Resource_skimr")])
 
+[sub_resource type="Resource" id="Resource_bpb2r"]
+script = ExtResource("6_xvq7k")
+min_value = 0.0
+max_value = 1000.0
+step = 1.0
+value = 100.0
+readable_param_name = "Peephole Radius"
+param_name = "peephole_radius"
+
+[sub_resource type="Resource" id="Resource_prs5t"]
+script = ExtResource("2_m8gra")
+name = "Mouse Peephole"
+shader_scene = ExtResource("9_2lhon")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_bpb2r")])
+
 [resource]
 script = ExtResource("1_6hx2y")
-shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt"), SubResource("Resource_ntgku")])
+shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt"), SubResource("Resource_ntgku"), SubResource("Resource_prs5t")])
