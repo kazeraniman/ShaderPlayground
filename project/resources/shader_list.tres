@@ -1,14 +1,12 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=19 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=17 format=3 uid="uid://dhfqvvyfaufe8"]
 
 [ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_6hx2y"]
 [ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_m8gra"]
 [ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="3_rylfg"]
 [ext_resource type="PackedScene" uid="uid://dhwtuks0xl8q1" path="res://scenes/shaders/greyscale.tscn" id="4_c3r4k"]
 [ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
-[ext_resource type="PackedScene" uid="uid://cj1dj4viriebu" path="res://scenes/shader_parameter_controls/slider.tscn" id="5_xya2v"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/slider_shader_parameter_properties.gd" id="6_xvq7k"]
 [ext_resource type="PackedScene" uid="uid://dma1qk626jhjx" path="res://scenes/shaders/mirror.tscn" id="8_dqgrl"]
-[ext_resource type="PackedScene" uid="uid://ce24ptyseq16d" path="res://scenes/shader_parameter_controls/toggle.tscn" id="8_ybnsi"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/toggle_shader_parameter_properties.gd" id="9_4wipw"]
 
 [sub_resource type="Resource" id="Resource_l263t"]
@@ -31,7 +29,6 @@ step = 1.0
 value = 100.0
 readable_param_name = "X Pixelation"
 param_name = "x_pixelation"
-control_scene = ExtResource("5_xya2v")
 
 [sub_resource type="Resource" id="Resource_0cbtc"]
 script = ExtResource("6_xvq7k")
@@ -41,7 +38,6 @@ step = 1.0
 value = 100.0
 readable_param_name = "Y Pixelation"
 param_name = "y_pixelation"
-control_scene = ExtResource("5_xya2v")
 
 [sub_resource type="Resource" id="Resource_el0bt"]
 script = ExtResource("2_m8gra")
@@ -54,14 +50,12 @@ script = ExtResource("9_4wipw")
 value = true
 readable_param_name = "Mirror X"
 param_name = "shouldMirrorX"
-control_scene = ExtResource("8_ybnsi")
 
 [sub_resource type="Resource" id="Resource_skimr"]
 script = ExtResource("9_4wipw")
-value = false
+value = null
 readable_param_name = "Mirror Y"
 param_name = "shouldMirrorY"
-control_scene = ExtResource("8_ybnsi")
 
 [sub_resource type="Resource" id="Resource_ntgku"]
 script = ExtResource("2_m8gra")
