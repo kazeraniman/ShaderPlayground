@@ -1,0 +1,237 @@
+[gd_scene load_steps=12 format=3 uid="uid://b6qg40rg3y4dd"]
+
+[ext_resource type="Script" path="res://scripts/shader_selection_menu.gd" id="1_2h7vq"]
+[ext_resource type="Texture2D" uid="uid://bu21vuvybnfrs" path="res://art/ui/grey_panel.png" id="1_x58ka"]
+[ext_resource type="Texture2D" uid="uid://cog14hu8a85p6" path="res://art/ui/red_circle.png" id="2_i1vek"]
+[ext_resource type="Texture2D" uid="uid://cfouf2j5ksos4" path="res://art/ui/grey_crossWhite.png" id="3_fqavi"]
+[ext_resource type="PackedScene" uid="uid://cae3kc8nbivor" path="res://scenes/shader_button.tscn" id="5_nncas"]
+
+[sub_resource type="Animation" id="Animation_f1x4g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.2, 0.2, 0.2, 0.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1bmo8"]
+resource_name = "close"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2, 0.2, 0.2, 0.501961), Color(0.2, 0.2, 0.2, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(1.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finalize_close"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2sg6p"]
+resource_name = "animate_in"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.2, 0.2, 0.2, 0), Color(0.2, 0.2, 0.2, 0.501961)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Contents:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.25),
+"transitions": PackedFloat32Array(1.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpwtp"]
+_data = {
+"RESET": SubResource("Animation_f1x4g"),
+"close": SubResource("Animation_1bmo8"),
+"open": SubResource("Animation_2sg6p")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oiisj"]
+texture = ExtResource("2_i1vek")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g62n5"]
+
+[node name="ShaderSelectionMenu" type="Control" node_paths=PackedStringArray("animation_player", "shader_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2h7vq")
+animation_player = NodePath("AnimationPlayer")
+shader_button_packed_scene = ExtResource("5_nncas")
+shader_container = NodePath("Contents/Contents/ScrollContainer/MarginContainer/ShaderListContainer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tpwtp")
+}
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2, 0.2, 0.2, 0.25)
+
+[node name="Contents" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.2
+anchor_right = 0.75
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(480, 324)
+
+[node name="Background" type="NinePatchRect" parent="Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_x58ka")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="CloseButtonContainer" type="Control" parent="Contents"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 0
+
+[node name="CloseButton" type="Button" parent="Contents/CloseButtonContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_oiisj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_oiisj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_oiisj")
+
+[node name="TextureRect" type="TextureRect" parent="Contents/CloseButtonContainer/CloseButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fqavi")
+
+[node name="Contents" type="Control" parent="Contents"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 30.0
+offset_right = -20.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Contents/Contents"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g62n5")
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Contents/Contents/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="ShaderListContainer" type="VBoxContainer" parent="Contents/Contents/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="Contents/CloseButtonContainer/CloseButton" to="." method="_on_close_button_pressed"]

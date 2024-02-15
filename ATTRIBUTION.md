@@ -5,3 +5,4 @@ In order to track attribution and ensure I don't forget any elements, all the at
 ## Art
 [The backgrounds](project/art/background) are provided by [Craftpix.net](https://free-game-assets.itch.io/) at Itch.io. The submission may be found [here](https://free-game-assets.itch.io/free-horizontal-game-backgrounds).
 
+[UI](project/art/ui) is provided by [Kenney](https://www.kenney.nl/). The submission may be found [here](https://www.kenney.nl/assets/ui-pack).

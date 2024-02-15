@@ -1,13 +1,21 @@
 extends CanvasLayer
 
 @export var current_shader_name_label: Label
+@export var shader_selection_menu: ShaderSelectionMenu
 
 func _input(event):
+	if event.is_action_released("quit"):
+		get_tree().quit()
+		return
+
 	if event.is_action_released("toggle_hud"):
 		toggle_hud()
 
 	if event.is_action_released("reset_params"):
 		reset_params()
+
+	if event.is_action_released("toggle_menu"):
+		shader_selection_menu.toggle_menu()
 
 func toggle_hud():
 	if visible:

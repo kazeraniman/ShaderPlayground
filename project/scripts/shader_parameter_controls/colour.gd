@@ -23,6 +23,7 @@ func init(p_shader_material: ShaderMaterial, p_parameter_properties: ShaderParam
 
 func reset_param():
 	colour_picker.color = Color(colour_parameter_properties.value.x, colour_parameter_properties.value.y, colour_parameter_properties.value.z, 1.0)
+	_on_color_picker_button_color_changed(colour_picker.color)
 
 func set_colour_picker_text():
 	colour_picker_value.text = "#" + colour_picker.color.to_html(false).to_upper()

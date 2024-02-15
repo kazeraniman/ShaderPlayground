@@ -1,3 +1,4 @@
+class_name ShaderManager
 extends Node
 
 signal shader_changed(shader_properties: ShaderProperties, material: ShaderMaterial)
