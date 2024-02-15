@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="ShaderList" load_steps=20 format=3 uid="uid://dhfqvvyfaufe8"]
+[gd_resource type="Resource" script_class="ShaderList" load_steps=25 format=3 uid="uid://dhfqvvyfaufe8"]
 
 [ext_resource type="Script" path="res://scripts/resources/shader_list.gd" id="1_6hx2y"]
 [ext_resource type="Script" path="res://scripts/resources/shader_properties.gd" id="2_m8gra"]
 [ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="3_rylfg"]
 [ext_resource type="PackedScene" uid="uid://dhwtuks0xl8q1" path="res://scenes/shaders/greyscale.tscn" id="4_c3r4k"]
 [ext_resource type="PackedScene" uid="uid://bkorosehsi688" path="res://scenes/shaders/pixelate.tscn" id="5_mveg0"]
+[ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/colour_shader_parameter_properties.gd" id="6_rehk4"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/slider_shader_parameter_properties.gd" id="6_xvq7k"]
 [ext_resource type="PackedScene" uid="uid://dma1qk626jhjx" path="res://scenes/shaders/mirror.tscn" id="8_dqgrl"]
 [ext_resource type="PackedScene" uid="uid://cf21w5jkom4bt" path="res://scenes/shaders/mouse_peephole.tscn" id="9_2lhon"]
 [ext_resource type="Script" path="res://scripts/resources/shader_parameter_properties/toggle_shader_parameter_properties.gd" id="9_4wipw"]
+[ext_resource type="PackedScene" uid="uid://ceie0bvm38gvp" path="res://scenes/shaders/tint_colour.tscn" id="10_txb2n"]
 
 [sub_resource type="Resource" id="Resource_l263t"]
 script = ExtResource("2_m8gra")
@@ -21,6 +23,27 @@ script = ExtResource("2_m8gra")
 name = "Greyscale"
 shader_scene = ExtResource("4_c3r4k")
 shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([])
+
+[sub_resource type="Resource" id="Resource_k20ug"]
+script = ExtResource("6_xvq7k")
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+readable_param_name = "Tint Influence"
+param_name = "tint_influence"
+
+[sub_resource type="Resource" id="Resource_45xl1"]
+script = ExtResource("6_rehk4")
+value = Vector3(1, 0, 0)
+readable_param_name = "Tint Colour"
+param_name = "tint_colour"
+
+[sub_resource type="Resource" id="Resource_661ne"]
+script = ExtResource("2_m8gra")
+name = "Tint Colour"
+shader_scene = ExtResource("10_txb2n")
+shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_properties/shader_parameter_properties.gd")]([SubResource("Resource_k20ug"), SubResource("Resource_45xl1")])
 
 [sub_resource type="Resource" id="Resource_eajal"]
 script = ExtResource("6_xvq7k")
@@ -54,7 +77,7 @@ param_name = "shouldMirrorX"
 
 [sub_resource type="Resource" id="Resource_skimr"]
 script = ExtResource("9_4wipw")
-value = null
+value = false
 readable_param_name = "Mirror Y"
 param_name = "shouldMirrorY"
 
@@ -81,4 +104,4 @@ shader_parameters = Array[Resource("res://scripts/resources/shader_parameter_pro
 
 [resource]
 script = ExtResource("1_6hx2y")
-shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_el0bt"), SubResource("Resource_ntgku"), SubResource("Resource_prs5t")])
+shader_resources = Array[ExtResource("2_m8gra")]([SubResource("Resource_l263t"), SubResource("Resource_jsdqy"), SubResource("Resource_661ne"), SubResource("Resource_el0bt"), SubResource("Resource_ntgku"), SubResource("Resource_prs5t")])

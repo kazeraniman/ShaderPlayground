@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://ceie0bvm38gvp"]
+
+[ext_resource type="PackedScene" uid="uid://ca3xppany6ccc" path="res://scenes/shaders/default.tscn" id="1_ql2m5"]
+[ext_resource type="Shader" path="res://shaders/color_tint.gdshader" id="2_w2sim"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpsbp"]
+shader = ExtResource("2_w2sim")
+shader_parameter/tint_colour = Vector3(1, 0, 0)
+shader_parameter/tint_influence = 0.5
+
+[node name="TintColourShader" instance=ExtResource("1_ql2m5")]
+material = SubResource("ShaderMaterial_lpsbp")
